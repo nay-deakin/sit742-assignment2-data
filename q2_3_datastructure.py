@@ -14,7 +14,7 @@ alldatastruct = {
                             {
                                 "left_right": ["8,816", "22,897"],
                                 "top_bottom": ["-ignore","2020"],
-                                "column_label": "indegenous_student_enrollment"
+                                "column_label": "indigenous_student_enrolment"
                             },
                         "other_columns": {
                             "year": {
@@ -24,8 +24,25 @@ alldatastruct = {
                         }
                     }
                 ],
-                "insights": "Indegenous student enrollments,\nhave almost trippled from the numbers in 2006.",
-                "charttype": "bar"
+                "insights": 
+"""
+Indegenous student enrollments,
+have almost trippled from the numbers in 2006.
+""",
+                "charttype": [
+                    {
+                        "charttype": "line",
+                        "x_col": "year",
+                        "y_series": [
+                            {
+                                "col": "indigenous_student_enrolment",
+                                "label": "Indigenous Student Enrolments"
+                            }
+                        ],
+                        
+                    }
+                ],
+                "percent": False
             },
             {
                 "tablename": "Share of Indigenous student enrolments, 2006 to 2020",
@@ -39,7 +56,7 @@ alldatastruct = {
                             {
                                 "left_right": ["1.22%", "2.04%"],
                                 "top_bottom": ["-ignore","2020"],
-                                "column_label": "share_indegenous_student_enrollment"
+                                "column_label": "share_indigenous_student_enrolment"
                             },
                         "other_columns": {
                             "year": {
@@ -49,8 +66,26 @@ alldatastruct = {
                         }
                     }
                 ],
-                "insights": "The share has also grown but the share is still below the population share of 3.1%",
-                "charttype": "bar"
+                "insights": 
+"""
+The share has also grown 
+but the share is still below 
+the population share of 3.1%
+""",
+                "charttype": [
+                    {
+                        "charttype": "line",
+                        "x_col": "year",
+                        "y_series": [
+                            {
+                                "col": "share_indigenous_student_enrolment",
+                                "label": "Share of Indigenous Student Enrolments"
+                            }
+                        ],
+                        
+                    }
+                ],
+                "percent": True
             }
         ]
     },
@@ -69,7 +104,7 @@ alldatastruct = {
                             {
                                 "left_right": ["6.7%", "2.4%"],
                                 "top_bottom": ["Indigenous","2021"],
-                                "column_label": "share_indegenous_student_enrollment"
+                                "column_label": "share_indigenous_student_enrolment"
                             },
                         "other_columns": {
                             "year": {
@@ -84,8 +119,31 @@ alldatastruct = {
                         }
                     }
                 ],
-                "insights": "Most year Indigenous application is out growing non-indigenous.  Observed negative growthin 2018 and 2021.",
-                "charttype": "bar"
+                "insights": 
+"""
+In most years, Indigenous application 
+is out growing non-indigenous.  
+Observed negative growth in 2018 and 2021.
+""",
+                "charttype": [
+                    {
+                        "charttype": "line",
+                        "x_col": "year",
+                        "y_series": [
+                            {
+                                "col": "share_indigenous_student_enrolment",
+                                "label": "Share of Indigenous Student Enrolments",
+                                "filter": [("ind_no-ind","Indigenous")]
+                            },
+                            {
+                                "col": "share_indigenous_student_enrolment",
+                                "label": "Share of Non-Indigenous Student Enrolments",
+                                "filter": [("ind_no-ind","Non-Indigenous")]
+                            }
+                        ],
+                    }
+                ],
+                "percent": True
             }
         ]
     },
@@ -138,8 +196,40 @@ alldatastruct = {
                         }
                     }                    
                 ],
-                "insights": "Most year Indigenous application is out growing non-indigenous.  Observed negative growthin 2018 and 2021.",
-                "charttype": "bar2"
+                "insights": 
+"""
+Indigenous students tend to enter Univerity ealier,
+however there is a noticeable drop off at higher 
+age brackets.
+""",
+                "charttype": None,
+                
+                # ok changed my mind not goin to write code for pie chart
+                # [
+                #     {
+                #         "charttype": "line",
+                #         "title": "Share of Indigenous applications by age",
+                #         "labels": "age_group",
+                #         "sizes": [
+                #             {
+                #                 "col": "values",
+                #                 "filter": [("ind_no-ind", "Indigenous applications")]
+                #             }
+                #         ],
+                #     },
+                #     {
+                #         "charttype": "line",
+                #         "title": "Share of Indigenous population by age",
+                #         "labels": "age_group",
+                #         "sizes": [
+                #             {
+                #                 "col": "values",
+                #                 "filter": [("ind_no-ind", "Indigenous population")]
+                #             }
+                #         ],
+                #     }
+                # ],
+                "percent": True
             },
             {
                 "tablename": "Share of Indigenous undergraduate applications compared to share of Indigenous population, by age, 2021",
@@ -167,8 +257,32 @@ alldatastruct = {
                         }
                     }
                 ],
-                "insights": "At the younger age group 15 to 24, the share of undergraduate appication is well below population parity.  However at the older age group it is at or higher than the population share.",
-                "charttype": "bar"
+                "insights": 
+"""
+At the younger age group 15 to 24, 
+the share of undergraduate appication 
+is well below population parity.  
+However at the older age group it is at 
+or higher than the population share.
+""",
+                "charttype": [
+                    {
+                        "charttype": "gap",
+                        "title": "Gap/Delta chart for Indigenous applications vs population (below 0 under-represented)",
+                        "x_col": "age_group",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "filter": [("ind_no-ind","Indigenous applications")]
+                            },
+                            {
+                                "col": "values",
+                                "filter": [("ind_no-ind","Indigenous population")]
+                            }
+                        ],
+                    }
+                ],
+                "percent": True
             }
         ]
     },
@@ -203,8 +317,30 @@ alldatastruct = {
                         }
                     }
                 ],
-                "insights": "Although the completion rates have improved for Indigenous students, it is still well below the non-indigenous population.",
-                "charttype": "bar"
+                "insights": 
+"""
+Although the completion rates have improved 
+for Indigenous students, it is still well 
+below the non-indigenous population.
+""",
+                "charttype": [
+                    {
+                        "charttype": "gap",
+                        "title": "Gap/Delta chart for Bachelor degree students, Indigenous vs Non-Indigenous (below 0 under-represented)",
+                        "x_col": "year",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "filter": [("ind_no-ind","Indigenous students")]
+                            },
+                            {
+                                "col": "values",
+                                "filter": [("ind_no-ind","Non-Indigenous students")]
+                            }
+                        ],
+                    }
+                ],
+                "percent": True
             }
         ]
     },
@@ -233,8 +369,26 @@ alldatastruct = {
                         }
                     }
                 ],
-                "insights":"The rate of in-completions have been improving over the year, however there is in uptick in 2017.",
-                "charttype": "bar"
+                "insights": 
+"""
+The rate of in-completions have been 
+improving over the years, 
+however there is an uptick in 2017.
+""",
+                "charttype": [
+                    {
+                        "charttype": "line",
+                        "title": "Share of Indigenous students commencing a Bachelor degree students over time",
+                        "x_col": "year",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "label": "Indigenous students"
+                            }                        
+                        ],
+                    }
+                ],
+                "percent": True
             }
         ]        
     },
@@ -251,29 +405,111 @@ alldatastruct = {
                         ],
                         "data": 
                             {
-                                "left_right": ["68.8%", "86.8%"],
+                                "left_right": ["68.8%", "86.1%"],
                                 "top_bottom": ["Indigenous","2008"],
                                 "column_label": "values"
                             },
                         "other_columns": {
                             "year": {
-                                "left_right": ["2008", "2019"],
-                                "top_bottom": ["68.8%","Success"],
+                                "vals": ["2008","2018","2019",2020],
                                 "chunk_size": 2            
                             },            
                             "rate_type":{
-                                "vals": ["Success rates","Retention rates"],
-                                "chunk_size": 8
+                                "vals": ["Success rates"],
+                                "chunk_size": 1
                             },
                             "ind_no-ind" : {
                                 "vals": ["Indigenous students","Non-Indigenous students"],
                                 "chunk_size": 1
                             }  
                         }
+                    },
+                    {
+                        "chart_anchor_text": [
+                            "non-Indigenous, per cent",
+                            "Source: Department of Education, Skills and Employment 2022, Visual Analytics–Attrition, retention and success rates."
+                        ],
+                        "data": 
+                            {
+                                "left_right": ["74.0%", "86.8%"],
+                                "top_bottom": ["Indigenous","2008"],
+                                "column_label": "values"
+                            },
+                        "other_columns": {
+                            "year": {
+                                "vals": ["2008","2017","2018",2019],
+                                "chunk_size": 2            
+                            },            
+                            "rate_type":{
+                                "vals": ["Retention rates"],
+                                "chunk_size": 1
+                            },
+                            "ind_no-ind" : {
+                                "vals": ["Indigenous students","Non-Indigenous students"],
+                                "chunk_size": 1
+                            }  
+                        }
+                    },
+                    
+                ],
+                "insights": 
+"""
+The success and retention rates have remained stable 
+for the past decade.  The indigenous rates are roughly 
+10% lower than the non-indigenous groups.
+Perhaps there is a mislabelling of the years, 
+with inconsistent year labels between success and retention.
+""",
+                "charttype": [
+                    {
+                        "charttype": "line",
+                        "title": "Success rates of domestic Bachelor degree students",
+                        "x_col": "year",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "label": "Indigenous Students",
+                                "filter": [
+                                    ("rate_type","Success rates"),
+                                    ("ind_no-ind","Indigenous students")
+                                ]
+                            },
+                            {
+                                "col": "values",
+                                "label": "Non-Indigenous Students",
+                                "filter": [
+                                    ("rate_type","Success rates"),
+                                    ("ind_no-ind","Non-Indigenous students")
+                                ]
+                            }
+                        ],
+                    },
+                    {
+                        "charttype": "line",
+                        "title": "Retention rates of domestic Bachelor degree students",
+                        "x_col": "year",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "label": "Indigenous Students",
+                                "filter": [
+                                    ("rate_type","Retention rates"),
+                                    ("ind_no-ind","Indigenous students")
+                                ]
+                            },
+                            {
+                                "col": "values",
+                                "label": "Non-Indigenous Students",
+                                "filter": [
+                                    ("rate_type","Retention rates"),
+                                    ("ind_no-ind","Non-Indigenous students")
+                                ]
+                                    
+                            }
+                        ],
                     }
                 ],
-                "insights": "The success and retention rates have remained stable for the past decade.  The indigenous rates are roughly 10% lower than the non-indigenous group.",
-                "charttype": "bar"
+                "percent": True
             }
         ]
     },
@@ -314,8 +550,57 @@ alldatastruct = {
                         }
                     }
                 ],
-                "insights": "A high percentage of Indigenous graduates are able to get employment 4 months after completion, generally higher percentage compared to non-indigenous group.",
-                "charttype": "bar"
+                "insights": 
+"""
+A high percentage of Indigenous graduates 
+are able to get employment, 4 months after completion, 
+generally higher percentage compared to non-indigenous group.
+""",
+                "charttype": [
+                    {
+                        "charttype": "gap",
+                        "title": "Gap/Delta chart for short term employment outcomes 2021, Undergraduate category (below 0 under-represented)",
+                        "x_col": "course_time",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("course_type","Undergraduate"),
+                                    ("ind_no-ind","Indigenous students")
+                                ]
+                            },
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("course_type","Undergraduate"),
+                                    ("ind_no-ind","Non-Indigenous students")
+                                ]
+                            }
+                        ],
+                    },
+                    {
+                        "charttype": "gap",
+                        "title": "Gap/Delta chart for short term employment outcomes 2021, Postgraduate coursework category (below 0 under-represented)",
+                        "x_col": "course_time",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("course_type","Postgraduate coursework"),
+                                    ("ind_no-ind","Indigenous students")
+                                ]
+                            },
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("course_type","Postgraduate coursework"),
+                                    ("ind_no-ind","Non-Indigenous students")
+                                ]
+                            }
+                        ],
+                    }
+                ],
+                "percent": True
             }
         ]
     },
@@ -356,8 +641,58 @@ alldatastruct = {
                         }
                     }
                 ],
-                "insights": "This is the 2018 chart and compared to the numbers from 2021, the indigenous employment opportunities have significantly improved.  Howerver the overall employment percentage has dropped in 2021.",
-                "charttype": "bar"
+                "insights": 
+"""
+This is the 2018 chart and compared to the numbers 
+from 2021, the indigenous employment opportunities 
+have significantly improved.  Howerver the overall 
+employment percentage has dropped in 2021.
+""",
+                "charttype": [
+                    {
+                        "charttype": "gap",
+                        "title": "Gap/Delta chart for short term employment outcomes 2018, Undergraduate category (below 0 under-represented)",
+                        "x_col": "course_time",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("course_type","Undergraduate"),
+                                    ("ind_no-ind","Indigenous students")
+                                ]
+                            },
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("course_type","Undergraduate"),
+                                    ("ind_no-ind","Non-Indigenous students")
+                                ]
+                            }
+                        ],
+                    },
+                    {
+                        "charttype": "gap",
+                        "title": "Gap/Delta chart for short term employment outcomes 2018, Postgraduate coursework category (below 0 under-represented)",
+                        "x_col": "course_time",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("course_type","Postgraduate coursework"),
+                                    ("ind_no-ind","Indigenous students")
+                                ]
+                            },
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("course_type","Postgraduate coursework"),
+                                    ("ind_no-ind","Non-Indigenous students")
+                                ]
+                            }
+                        ],
+                    }
+                ],
+                "percent": True
             }
         ]
     },
@@ -398,8 +733,34 @@ alldatastruct = {
                         }
                     }
                 ],
-                "insights": "Accross all classificatins, Indigenous have higher percentage of being female as compared to non-Indigenous groups.",
-                "charttype": "bar"
+                "insights": 
+"""
+Accross all classificatins, Indigenous group 
+have higher percentage of being female as compared 
+to non-Indigenous groups.
+""",
+                "charttype": [
+                    {
+                        "charttype": "gap",
+                        "title": "Gap/Delta chart for share of female staff by duties classifications 2021 (below 0 under-represented)",
+                        "x_col": "duty_classification",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("ind_no-ind","Indigenous staff")
+                                ]
+                            },
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("ind_no-ind","Non-Indigenous staff")
+                                ]
+                            }
+                        ],
+                    }
+                ],
+                "percent": True
             }
         ]
     },
@@ -440,8 +801,34 @@ alldatastruct = {
                         }
                     }
                 ],
-                "insights": "Indigenous staff tends to be older than non-indigenous couterparts, especially in the academic setting.",
-                "charttype": "bar"
+                "insights": 
+"""
+Indigenous staff tends to be older than 
+non-indigenous couterparts, 
+especially in the academic setting.
+""",
+                "charttype": [
+                    {
+                        "charttype": "gap",
+                        "title": "Gap/Delta chart for proportion of staff age under 40 by duties classifications 2021 (below 0 under-represented)",
+                        "x_col": "duty_classification",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("ind_no-ind","Indigenous staff")
+                                ]
+                            },
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("ind_no-ind","Non-Indigenous staff")
+                                ]
+                            }
+                        ],
+                    }
+                ],
+                "percent": True
             }
         ]
     },
@@ -560,8 +947,18 @@ alldatastruct = {
                         }
                     }
                 ],
-                "insights": "At level A and level B, the proportion of Indigenous staff is higher than non-indigenous staff.\n  At more senior level, the indigenous staff numbers still lags behind non-indigenous staff.  However the good sign is that, at senior leve it is growing",
-                "charttype": "stackbar"
+                "insights": 
+"""
+At level A and level B, the proportion 
+of Indigenous staff is higher than the
+non-indigenous staff.\n  At more senior levels, 
+the indigenous staff numbers still lags behind 
+the non-indigenous staff.  However the good sign 
+is that, at senior levels, the numbers are growing 
+year on year
+""",
+                "charttype": None,
+                "percent": True
             }
         ]
     },
@@ -653,8 +1050,17 @@ alldatastruct = {
                         }
                     },
                 ],
-                "insights": "Teaching and Research roles have become more seperated over the year.  In more recent years, Indigenous staff are more likely to be teaching only and Indigenous staff proportion in Research only still lags behind non-indegenous staff.",
-                "charttype": "stackbar"
+                "insights": 
+"""
+Teaching and Research roles have become 
+more seperated over the years.  In more 
+recent years, Indigenous staff are more 
+likely to be teaching only and Indigenous 
+staff proportions in `Research only`, 
+still lags behind non-indegenous staff.
+""",
+                "charttype": None,
+                "percent": True
             }
         ]
     },
@@ -681,18 +1087,42 @@ alldatastruct = {
                                 "chunk_size": 2
                             },
                             "ind_no-ind" : {
-                                "vals": ["ndigenous staff (actual numbers)", "Population parity figure"],
+                                "vals": ["Indigenous staff (actual numbers)", "Population parity figure"],
                                 "chunk_size": 1
                             }
                         }
                     }
                 ],
-                "insights":"""In terms of types of roles, the sector would have
+                "insights":
+"""
+In terms of types of roles, the sector would have
 needed to employ an extra 90 Indigenous staff in
 teaching-only roles, 411 in research-only roles and
 570 in roles that combined teaching and research
-in 2021.""",
-                "charttype":"bar"
+in 2021.
+""",
+                "charttype": [
+                    {
+                        "charttype": "gap",
+                        "title": "Gap/Delta chart for proportion of actual vs population parity 2021 (below 0 under-represented)",
+                        "x_col": "duty_classification",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("ind_no-ind","Indigenous staff (actual numbers)")
+                                ]
+                            },
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("ind_no-ind","Population parity figure")
+                                ]
+                            }
+                        ],
+                    }
+                ],
+                "percent": False
             }
         ]
     },
@@ -719,18 +1149,70 @@ in 2021.""",
                                 "chunk_size": 2
                             },
                             "ind_no-ind" : {
-                                "vals": ["Actual Indigenous students ", "Population parity figure"],
+                                "vals": ["Actual Indigenous students", "Population parity figure"],
                                 "chunk_size": 1
                             },
-                            "course_type": {
-                                "vals": ["Postgraduate research", "Postgraduate coursework"], #still can't handle axis labels with spaces
+                            "course_status": {
+                                "vals": ["Enrolment", "Award completions"], #still can't handle axis labels with spaces
                                 "chunk_size": 4
                             },
                         }
                     }
                 ],
-                "insights": "Througout this report, we have seen that Indigenous representation in acamedic settings has improved greatly in the past decade.  However this final chart show that much more work is needed to be done if we want to reach population parity of 3.1%.",
-                "charttype": "bar"
+                "insights": 
+"""
+Througout this report, we have seen that the 
+Indigenous representation in acamedic settings 
+has improved greatly in the past decade.  
+However this final chart show that much more work 
+is needed to be done if we want to reach population 
+parity of 3.1%.
+""",
+                "charttype": [
+                    {
+                        "charttype": "gap",
+                        "title": "Gap/Delta chart for postgraduate student, actual vs population parity for Enrolment 2021 (below 0 under-represented)",
+                        "x_col": "course_type",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("ind_no-ind","Actual Indigenous students"),
+                                    ("course_status","Enrolment")
+                                ]
+                            },
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("ind_no-ind","Population parity figure"),
+                                    ("course_status","Enrolment")
+                                ]
+                            }
+                        ],
+                    },
+                    {
+                        "charttype": "gap",
+                        "title": "Gap/Delta chart for postgraduate student, actual vs population parity for Award completion 2021 (below 0 under-represented)",
+                        "x_col": "course_type",
+                        "y_series": [
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("ind_no-ind","Actual Indigenous students"),
+                                    ("course_status","Award completions")
+                                ]
+                            },
+                            {
+                                "col": "values",
+                                "filter": [
+                                    ("ind_no-ind","Population parity figure"),
+                                    ("course_status","Award completions")
+                                ]
+                            }
+                        ],
+                    }
+                ],
+                "percent": False
             }
         ]
     }
